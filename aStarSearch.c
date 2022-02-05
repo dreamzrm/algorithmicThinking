@@ -71,7 +71,7 @@ int main(){
         printf("Enter the distance from the end for node %c", a[i]);
         scanf("%c", distanceFromEnd[i]);
     }
-    //pritnf("%c%c%d", b[1].firstPosition, b[1].nextPosition, b[1].distance);
+    //printf("%c%c%d", b[1].firstPosition, b[1].nextPosition, b[1].distance);
     //char start, end;
 /*for(int i=0;i<n;i++){
     if(b[i].isStart==true){
