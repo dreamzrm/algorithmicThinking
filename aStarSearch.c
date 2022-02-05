@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 int n;
-char start, end;
+//char start, end;
 
 struct connection{
     char nextPosition;
@@ -25,7 +25,7 @@ struct priority{
     int length;
     struct priority *next;
 };
-int intCurrentNode(char currentNode){
+int intCurrentNode(char currentNode, char a[]){
     for(int i=0;i<n;i++){
         if(a[i]==currentNode)
         return i;
@@ -48,6 +48,7 @@ char isClosest(struct priority *root){
 
 int main(){ 
     int found=0;
+    printf("Enter the number of nodes\n");
     scanf("%d", &n);
     char a[n];
     int distanceFromEnd[n];
@@ -57,7 +58,7 @@ int main(){
     struct connection b[n][n];
     for(int j=0;j<n;j++){
     for(int i=0;i<n;i++){
-        printf("Enter the connection for %c. The second position and distance between them", a[j]);
+        printf("Enter the connection for %c. The second position and distance between them\n", a[j]);
         scanf("%c%d%d",  &b[j][i].nextPosition, &b[j][i].distance);
         /*printf("Is it the starting point or the end point?");
         bool yes, no;
@@ -68,7 +69,7 @@ int main(){
     }
     }
     for(int i=0;i<n;i++){
-        printf("Enter the distance from the end for node %c", a[i]);
+        printf("Enter the distance from the end for node %c\n", a[i]);
         scanf("%c", distanceFromEnd[i]);
     }
     //printf("%c%c%d", b[1].firstPosition, b[1].nextPosition, b[1].distance);
@@ -98,7 +99,7 @@ int counter=1;
 while(found==0){
     //priorityQueue
     char currentNode= isClosest(root);
-    int currentNodeInt = intCurrentNode(currentNode);
+    int currentNodeInt = intCurrentNode(currentNode,a);
     for(int i=0; i<n; i++){
         if(currentNode==a[n-1]){
             path[counter]=currentNode;
