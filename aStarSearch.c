@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 int n;
-//char start, end;
+char start, end;
+
 
 struct connection{
     char nextPosition;
@@ -33,7 +35,7 @@ int intCurrentNode(char currentNode, char a[]){
 }
 
 char isClosest(struct priority *root){
-    int max=INT_MIN;
+    int max=-1;
     char node;
     struct priority *temp=root;
     while(temp!=NULL){
@@ -48,7 +50,6 @@ char isClosest(struct priority *root){
 
 int main(){ 
     int found=0;
-    printf("Enter the number of nodes\n");
     scanf("%d", &n);
     char a[n];
     int distanceFromEnd[n];
@@ -58,8 +59,8 @@ int main(){
     struct connection b[n][n];
     for(int j=0;j<n;j++){
     for(int i=0;i<n;i++){
-        printf("Enter the connection for %c. The second position and distance between them\n", a[j]);
-        scanf("%c%d%d",  &b[j][i].nextPosition, &b[j][i].distance);
+        printf("Enter the connection for %c. The second position and distance between them", a[j]);
+        scanf("%c%d",  &b[j][i].nextPosition, &b[j][i].distance);
         /*printf("Is it the starting point or the end point?");
         bool yes, no;
         scanf("%s%s", &yes, &no);
@@ -69,10 +70,10 @@ int main(){
     }
     }
     for(int i=0;i<n;i++){
-        printf("Enter the distance from the end for node %c\n", a[i]);
-        scanf("%c", distanceFromEnd[i]);
+        printf("Enter the distance from the end for node %c", a[i]);
+        scanf("%d", distanceFromEnd[i]);
     }
-    //printf("%c%c%d", b[1].firstPosition, b[1].nextPosition, b[1].distance);
+    //pritnf("%c%c%d", b[1].firstPosition, b[1].nextPosition, b[1].distance);
     //char start, end;
 /*for(int i=0;i<n;i++){
     if(b[i].isStart==true){
@@ -88,7 +89,8 @@ for(j=0;j<n;j++){
     break;    
 }*/
 struct priority *root=NULL;
-struct priority *temp= (struct priority*)malloc(sizeof(struct priority));
+struct priority *temp;
+temp= (struct priority*)malloc(sizeof(struct priority));
 temp->position=a[0];
 temp->length=b[0][n-1].distance;
 temp->next=NULL;
@@ -112,13 +114,13 @@ while(found==0){
             }
             exit(0);
         }
-        else if(b[currentnodeInt][i].distance!=0){
+        else if(b[currentNodeInt][i].distance!=0){
             int length= b[currentNodeInt][i].distance + distanceFromEnd[i];
             struct priority *t = (struct priority*)malloc(sizeof(struct priority));
             t->position=a[i];
             t->length=length;
             struct priority *traverse=root;
-            while(traverse->next!='\0')
+            while(traverse->next!=NULL)
             traverse = traverse->next;
             traverse->next=t;
         }
