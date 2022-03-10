@@ -1,3 +1,8 @@
+/* I'm so grateful for your viewing my version of this algorithm!
+It is an extension of dijkstra's algorithm but with a sense of direction which is achieved by perpendicular distance.
+To know more about it, I highly recommend checking this video out  : https://www.youtube.com/watch?v=ySN5Wnu88nE.
+*/
+
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
