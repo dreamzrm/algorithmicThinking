@@ -120,7 +120,7 @@ while(found==0){
             exit(0);
         }
         else if(b[currentNodeInt][i].distance!=0){
-            int length= b[currentNodeInt][i].distance + distanceFromEnd[i];
+            int length= b[currentNodeInt][0].distance + b[currentNodeInt][i].distance + distanceFromEnd[i];
             struct priority *t = (struct priority*)malloc(sizeof(struct priority));
             t->position=a[i];
             t->length=length;
@@ -131,7 +131,7 @@ while(found==0){
         }
     }//end of for
     struct priority *traverse;
-    while(traverse->position!=temp->position)
+    while(traverse->next->position!=temp->position)
     traverse=traverse->next;
     traverse->next=temp->next;
     temp->next=NULL;
